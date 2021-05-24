@@ -1,2 +1,2 @@
 # StudyWinForms
-sdsa
+WinForms 학습리포지토리
