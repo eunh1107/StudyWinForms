@@ -34,6 +34,7 @@ namespace ApplicationDev_Do
             this.M_SYSTEM = new System.Windows.Forms.ToolStripMenuItem();
             this.MDI_TEST = new System.Windows.Forms.ToolStripMenuItem();
             this.MDI_TEST2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.FM_ITEM = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.stbSearch = new System.Windows.Forms.ToolStripButton();
             this.stbInsert = new System.Windows.Forms.ToolStripButton();
@@ -48,7 +49,6 @@ namespace ApplicationDev_Do
             this.tssNowDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.myTabControl1 = new ApplicationDev_Do.MyTabControl();
-            this.FM_ITEM = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -78,14 +78,20 @@ namespace ApplicationDev_Do
             // MDI_TEST
             // 
             this.MDI_TEST.Name = "MDI_TEST";
-            this.MDI_TEST.Size = new System.Drawing.Size(228, 26);
+            this.MDI_TEST.Size = new System.Drawing.Size(224, 26);
             this.MDI_TEST.Text = "테스트 화면";
             // 
             // MDI_TEST2
             // 
             this.MDI_TEST2.Name = "MDI_TEST2";
-            this.MDI_TEST2.Size = new System.Drawing.Size(228, 26);
-            this.MDI_TEST2.Text = "toolStripMenuItem1";
+            this.MDI_TEST2.Size = new System.Drawing.Size(224, 26);
+            this.MDI_TEST2.Text = "테스트 화면";
+            // 
+            // FM_ITEM
+            // 
+            this.FM_ITEM.Name = "FM_ITEM";
+            this.FM_ITEM.Size = new System.Drawing.Size(224, 26);
+            this.FM_ITEM.Text = "품목관리";
             // 
             // toolStrip
             // 
@@ -225,12 +231,6 @@ namespace ApplicationDev_Do
             this.myTabControl1.SelectedIndex = 0;
             this.myTabControl1.Size = new System.Drawing.Size(1029, 435);
             this.myTabControl1.TabIndex = 4;
-            // 
-            // FM_ITEM
-            // 
-            this.FM_ITEM.Name = "FM_ITEM";
-            this.FM_ITEM.Size = new System.Drawing.Size(228, 26);
-            this.FM_ITEM.Text = "품목관리";
             // 
             // FM_Main
             // 

@@ -108,11 +108,13 @@ namespace DEV_Form
                                                             "       MAKER,     " +
                                                             "       EDITDATE,  " +
                                                             "       EDITOR     " +
-                                                            "  FROM TB_TESTITEM_DSH WITH(NOLOCK) " +
+                                                            "  FROM TB_TESTITEM_DSH WITH(NOLOCK) "        +
                                                             " WHERE ITEMCODE LIKE '%" + sItemCode + "%' " +
                                                             "   AND ITEMNAME LIKE '%" + sItemName + "%' " +
                                                             "   AND ITEMDESC LIKE '%" + sItemdesc + "%' " +
-                                                            "   AND ENDFLAG  = '" + sEndFlag + "'", Connect);
+                                                            "   AND ENDFLAG  = '" + sEndFlag + "'"+
+                                                            "   AND PRODDATE BETWEEN  = '" + sStartDate + "'AND'" + sEndDate + "'"
+                                                            , Connect);
 
                 DataTable dtTemp = new DataTable();
                 Adapter.Fill(dtTemp);
