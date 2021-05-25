@@ -91,7 +91,7 @@ namespace ApplicationDev_Do
             // 
             this.FM_ITEM.Name = "FM_ITEM";
             this.FM_ITEM.Size = new System.Drawing.Size(224, 26);
-            this.FM_ITEM.Text = "품목관리";
+            this.FM_ITEM.Text = "품목 관리";
             // 
             // toolStrip
             // 
@@ -189,10 +189,10 @@ namespace ApplicationDev_Do
             this.tssSpace,
             this.tssUserName,
             this.tssNowDate});
-            this.statusStrip.Location = new System.Drawing.Point(0, 576);
+            this.statusStrip.Location = new System.Drawing.Point(0, 578);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 18, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1029, 24);
+            this.statusStrip.Size = new System.Drawing.Size(1029, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -200,21 +200,21 @@ namespace ApplicationDev_Do
             // 
             this.tssSpace.AutoSize = false;
             this.tssSpace.Name = "tssSpace";
-            this.tssSpace.Size = new System.Drawing.Size(410, 18);
+            this.tssSpace.Size = new System.Drawing.Size(410, 16);
             this.tssSpace.Spring = true;
             // 
             // tssUserName
             // 
             this.tssUserName.AutoSize = false;
             this.tssUserName.Name = "tssUserName";
-            this.tssUserName.Size = new System.Drawing.Size(300, 18);
+            this.tssUserName.Size = new System.Drawing.Size(300, 16);
             this.tssUserName.Text = "toolStripStatusLabel2";
             // 
             // tssNowDate
             // 
             this.tssNowDate.AutoSize = false;
             this.tssNowDate.Name = "tssNowDate";
-            this.tssNowDate.Size = new System.Drawing.Size(300, 18);
+            this.tssNowDate.Size = new System.Drawing.Size(300, 16);
             this.tssNowDate.Text = "toolStripStatusLabel3";
             // 
             // timer1
@@ -227,9 +227,10 @@ namespace ApplicationDev_Do
             // 
             this.myTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.myTabControl1.Location = new System.Drawing.Point(0, 141);
+            this.myTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.myTabControl1.Name = "myTabControl1";
             this.myTabControl1.SelectedIndex = 0;
-            this.myTabControl1.Size = new System.Drawing.Size(1029, 435);
+            this.myTabControl1.Size = new System.Drawing.Size(1029, 437);
             this.myTabControl1.TabIndex = 4;
             // 
             // FM_Main
@@ -243,7 +244,7 @@ namespace ApplicationDev_Do
             this.Controls.Add(this.MenuStip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MenuStip;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FM_Main";
             this.Text = "Application DEV V 1.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

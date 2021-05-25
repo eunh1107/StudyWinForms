@@ -52,7 +52,7 @@ namespace ApplicationDev_Do
 
             // SQL 조회문을 실행시키기 위한 어댑터 
             SqlDataAdapter Adapter = new SqlDataAdapter(
-                "SELECT PW FROM TB_USER_DSH WHERE USERID = '" + sLoinid  + "'", Connect);
+                "SELECT PW FROM TB_USER_KEH WHERE USERID = '" + sLoinid  + "'", Connect);
             
             // 데이터를 담을 그릇
             DataTable DtTemp = new DataTable();
@@ -83,7 +83,7 @@ namespace ApplicationDev_Do
                 Tran = Connect.BeginTransaction("TEST_Tran"); // 트랜잭션 선언
                 cmd.Transaction = Tran;   // 커맨드에 트랜잭션 사용여부 등록
                 cmd.Connection = Connect; // 커맨드에 접속 정보 입력
-                cmd.CommandText = "UPDATE TB_USER_DSH SET PW = '" + sNewPw + "' WHERE USERID = '" + sLoinid + "'";
+                cmd.CommandText = "UPDATE TB_USER_KEH SET PW = '" + sNewPw + "' WHERE USERID = '" + sLoinid + "'";
                 cmd.ExecuteNonQuery(); // C,U,D 실행 함수 실행
 
                 Tran.Commit();  // 변경 내용 승인

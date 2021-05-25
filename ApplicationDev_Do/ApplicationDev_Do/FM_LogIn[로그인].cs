@@ -54,7 +54,7 @@ namespace ApplicationDev_Do
                 // ID 존재 여부 확인.
                 if (DtTemp.Rows.Count == 0)
                 {
-                    MessageBox.Show("로그인 ID가 잘못 되었습니다.");
+                    MessageBox.Show("로그인 ID 가 잘못 되었습니다.");
                     //txtUserID.Text = "";
                     txtPassword.Focus();
                     return;
@@ -67,10 +67,10 @@ namespace ApplicationDev_Do
                     txtPassword.Text = "";
                     txtPassword.Focus();
                     PwFailCount += 1;
-                    MessageBox.Show("비밀번호가 잘못 되었습니다. 누적 횟수 : " + PwFailCount.ToString());
+                    MessageBox.Show("비밀번호 가 잘못 되었습니다. 누적 횟수 : " + PwFailCount.ToString());
                     if (PwFailCount == 3)
                     {
-                        MessageBox.Show("3회 이상 비밀번호를 잘못입력하여 프로그램을 종료합니다.");
+                        MessageBox.Show("3회 이상 비밀번호를 잘못입력하여 프로그램을 종료 합니다.");
                         this.Close();
                     }
                     return;
