@@ -42,6 +42,9 @@ namespace DEV_Form
                 cboItemDesc.DisplayMember = "ITEMDESC"; // 눈으로 보여줄 항목
                 cboItemDesc.ValueMember = "ITEMDESC"; // 실제 데이터를 처리할 코드 항목 
                 cboItemDesc.Text = "";
+
+                // 원하는 날짜 픽스
+                dtpStart.Text = string.Format("{0:yyyy-MM-01}",DateTime.Now);
             }
             catch (Exception ex) 
             {
@@ -143,7 +146,7 @@ namespace DEV_Form
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // 데이터 그리드 뷰 에 신규 행 추가
+            // 데이터 그리드 뷰에 신규 행 추가
             DataRow dr = ((DataTable)dgvGrid.DataSource).NewRow();
             ((DataTable)dgvGrid.DataSource).Rows.Add(dr);
             dgvGrid.Columns["ITEMCODE"].ReadOnly = false;   
@@ -188,13 +191,81 @@ namespace DEV_Form
             {
                 Connect.Close();
             }
-
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // 선택된 행 데이터 저장
+            if (dgvGrid.Rows.Count == 0) return;
+            if (MessageBox.Show("선택된 데이터를 등록하시겠습니까?", "데이터 등록",
+                MessageBoxButtons.YesNo) == DialogResult.No) return;
 
+            string sItemCode    = dgvGrid.CurrentRow.Cells["ITEMCODE"].Value.ToString();
+            string sItemName    = dgvGrid.CurrentRow.Cells["ITEMNAME"].Value.ToString();
+            string sItemDesc    = dgvGrid.CurrentRow.Cells["ITEMDESC"].Value.ToString();
+            string sItemDesc2   = dgvGrid.CurrentRow.Cells["ITEMDESC2"].Value.ToString();
+            string sItemEndFlag = dgvGrid.CurrentRow.Cells["ENDFLAG"].Value.ToString();
+            string sProdDate    = dgvGrid.CurrentRow.Cells["PRODDATE"].Value.ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction Tran;
+
+            Connect = new SqlConnection(strConn);
+            Connect.Open();
+
+            // 데이터 조회 후 해당 데이터가 있는지 확인 후 UPDATE, INSERT 구문 분기
+            //string sSql = "SELECT ITEMCODE FROM TB_TESTITEM_KEH WHERE ITEMCODE= '" + sItemCode + "'";
+            //SqlDataAdapter adapter = new SqlDataAdapter(sSql, Connect);
+            //DataTable dtTemp = new DataTable();
+            //adapter.Fill(dtTemp);
+
+            // 트랜잭션 설정
+            Tran = Connect.BeginTransaction("TestTran");
+            cmd.Transaction = Tran;
+            cmd.Connection = Connect;
+
+            cmd.CommandText = "UPDATE TB_TestItem                                  " +
+                                      "    SET ITEMNAME  = '" + sItemName  + "',  " +
+                                      "        ITEMDESC  = '" + sItemDesc  + "',  " +
+                                      "        ITEMDESC2 = '" + sItemDesc2 + "',  " +
+                                      "        ENDFLAG   = '" + "N"   + "',  " +
+                                      "        PRODDATE  = '" + sProdDate  + "',  " +
+                                      "        EDITOR    = '',  "          +
+                                      //"        EDITOR  = '"    + Commoncs.LoginUserID + "',  " +
+                                      "        EDITDATE  = GETDATE()     " +
+                                      "  WHERE ITEMCODE  = '" + sItemCode  + "'"     +
+                                      " IF (@@ROWCOUNT =0) "  +
+                                      "INSERT INTO TB_TestItem(ITEMCODE,           ITEMNAME,            ITEMDESC,           ITEMDESC2,          ENDFLAG,           PRODDATE,      MAKEDATE,     MAKER) " +
+                                      "VALUES('" + sItemCode + "','" + sItemName + "','" + sItemDesc + "','" + sItemDesc2 + "','" + "N" + "','" + sProdDate + "',GETDATE(),'')";
+
+            
+            // 데이터가 있는 경우 UPDATE, 없는 경우 INSERT
+            //if(dtTemp.Rows.Count == 0)
+            //{
+            //    // 데이터가 없으니 INSERT 해라
+            //    cmd.CommandText = "INSERT INTO TB_TESTITEM_KEH (     ITEMCODE,            ITEMNAME,            ITEMDESC,            ITEMDESC2,              ENDFLAG,              PRODDATE,      MAKEDATE, MAKER)" +
+            //                      "                     VALUES ('" + sItemCode + "', '" + sItemName + "', '" + sItemDesc + "', '" + sItemDesc2 + "', '" + "N" + "', '" + sProdDate + "',GETDATE(),'" + "" + "')";
+            //}
+            //else
+            //{
+            //    // 데이터가 있으니 UPDATE 해라
+            //    cmd.CommandText = "UPDATE TB_TestItem_KEH                        " +
+            //                      "    SET ITEMNAME = '"   + sItemName    + "',  " +
+            //                      "        ITEMDESC = '"   + sItemDesc    + "',  " +
+            //                      "        ITEMDESC2 = '"  + sItemDesc2   + "',  " +
+            //                      "        ENDFLAG = '"    + "N"          + "',  " +
+            //                      "        PRODDATE = '"   + sProdDate    + "',  " +
+            //                      "        EDITOR = '',  " +
+            //                      //"      EDITOR = '"     + Commoncs.LoginUserID  + "',  " +
+            //                      "        EDITDATE = GETDATE()     "              +
+            //                      "  WHERE ITEMCODE = '"   + sItemCode             + "'";
+            //}
+            cmd.ExecuteNonQuery();
+
+            // 성공 시 DB COMMIT
+            Tran.Commit();
+            MessageBox.Show("정상적으로 등록하였습니다.");
+            Connect.Close();
         }
     }
 }

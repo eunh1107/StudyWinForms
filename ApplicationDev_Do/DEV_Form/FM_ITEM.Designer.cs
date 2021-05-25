@@ -107,7 +107,7 @@ namespace DEV_Form
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(130, 27);
             this.dtpStart.TabIndex = 4;
-            this.dtpStart.Value = new System.DateTime(2021, 5, 24, 0, 0, 0, 0);
+            this.dtpStart.Value = new System.DateTime(2021, 5, 25, 10, 49, 28, 0);
             // 
             // dtpEnd
             // 
@@ -117,7 +117,7 @@ namespace DEV_Form
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(124, 27);
             this.dtpEnd.TabIndex = 5;
-            this.dtpEnd.Value = new System.DateTime(2021, 5, 24, 0, 0, 0, 0);
+            this.dtpEnd.Value = new System.DateTime(2021, 5, 25, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -260,6 +260,8 @@ namespace DEV_Form
             // 
             // dgvGrid
             // 
+            this.dgvGrid.AllowUserToAddRows = false;
+            this.dgvGrid.AllowUserToDeleteRows = false;
             this.dgvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvGrid.Location = new System.Drawing.Point(4, 68);
