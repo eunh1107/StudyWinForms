@@ -33,7 +33,7 @@ namespace ApplicationDev_Do
             {
 
                 // 11. 데이터 베이스 접속 경로 설정
-                string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=kfqs1;Password=1234";  //DESKTOP-HNMKD38\SQLEXPRESS 
+                string strConn = "Data Source=222.235.141.8; Initial Catalog=AppDev;User ID=kfqs1;Password=1234";  //DESKTOP-HNMKD38\SQLEXPRESS 
                 //"Server=localhost; Uid=test;Pwd =test; database=test; "
                 //string strConn = "Server=localhost; Uid=test;Pwd =test; database=test; ";  //DESKTOP-HNMKD38\SQLEXPRESS 
                 Connect = new SqlConnection(strConn);

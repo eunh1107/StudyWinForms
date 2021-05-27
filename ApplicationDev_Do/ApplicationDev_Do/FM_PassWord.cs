@@ -30,7 +30,7 @@ namespace ApplicationDev_Do
         private void btnChPw_Click(object sender, EventArgs e)
         {
             // 비밀 번호를 변경한다. 
-            string strCon = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=kfqs;Password=1234";
+            string strCon = "Data Source=222.235.141.8; Initial Catalog=AppDev;User ID=kfqs;Password=1234";
             Connect = new SqlConnection(strCon);
 
             Connect.Open(); // 데이터 베이스에 접속 한다.

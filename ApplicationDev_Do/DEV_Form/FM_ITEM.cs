@@ -11,7 +11,7 @@ namespace DEV_Form
     {
         private SqlConnection Connect = null; // 접속 정보 객체 명명
         // 접속 주소 
-        private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=kfqs1;Password=1234";
+        private string strConn = "Data Source=222.235.141.8; Initial Catalog=AppDev;User ID=kfqs1;Password=1234";
 
         public FM_ITEM()
         {
