@@ -2,6 +2,7 @@
 using System.Data; 
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DEV_Form;
 
 namespace ApplicationDev_Do
 {
@@ -77,6 +78,9 @@ namespace ApplicationDev_Do
                 }
                 else
                 {
+                    
+                    Common.LogInId   = txtUserID.Text;
+                    Common.LogInName = DtTemp.Rows[0]["USERNAME"].ToString(); // 유저 명을 Common 에 등록함
                     this.Tag = DtTemp.Rows[0]["USERNAME"].ToString(); // 유저 명을 메인화면으로 보냄
                     this.Close();
                 }

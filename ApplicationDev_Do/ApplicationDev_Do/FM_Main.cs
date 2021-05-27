@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DEV_Form;
 
 namespace ApplicationDev_Do
 {
@@ -18,14 +10,15 @@ namespace ApplicationDev_Do
         {
             InitializeComponent();
             // 로그인 폼 호출
-            //FM_LogIn Login = new FM_LogIn();
-            //Login.ShowDialog();
+            FM_LogIn Login = new FM_LogIn();
+            Login.ShowDialog();
 
-            //tssUserName.Text = Login.Tag.ToString();
-            //if (Login.Tag.ToString() == "FAIL")
-            //{
-            //    System.Environment.Exit(0);
-            //}
+            tssUserName.Text = Login.Tag.ToString();
+            if (Login.Tag.ToString() == "FAIL")
+            {
+                System.Environment.Exit(0);
+            }
+
 
             // 버튼 종료이벤 트 추가
             this.stbExit.Click += new System.EventHandler(this.stbExit_Click);
@@ -36,8 +29,32 @@ namespace ApplicationDev_Do
             // 매뉴 클릭 이벤트 추가
             this.M_SYSTEM.DropDownItemClicked += 
                 new System.Windows.Forms.ToolStripItemClickedEventHandler(this.M_SYSTEM_DropDownItemClicked);
-        }
 
+            // 조회 버튼 이벤트 추가
+            this.stbSearch.Click += new System.EventHandler(this.stbSearch_Click);
+            // 추가 버튼 이벤트 추가
+            this.stbInsert.Click += new System.EventHandler(this.stbInsert_Click);
+            // 삭제 버튼 이벤트 추가
+            this.stbDelete.Click += new System.EventHandler(this.stbDelete_Click);
+            // 저장 버튼 이벤트 추가
+            this.stbSave.Click   += new System.EventHandler(this.stbSave_Click);
+        }
+        private void stbSearch_Click(object sender, EventArgs e)
+        {
+            ChildCommand("SEARCH");
+        }
+        private void stbInsert_Click(object sender, EventArgs e)
+        {
+            ChildCommand("NEW");
+        }
+        private void stbDelete_Click(object sender, EventArgs e)
+        {
+            ChildCommand("DELETE");
+        }
+        private void stbSave_Click(object sender, EventArgs e)
+        {
+            ChildCommand("SAVE");
+        }
         private void stbExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -82,6 +99,22 @@ namespace ApplicationDev_Do
             //ShowForm.Show();
             myTabControl1.AddForm(ShowForm); // 탭페이지에 폼을 추가하여 오픈한다.
         }
+        private void ChildCommand(string Command)
+        {
+            if (this.myTabControl1.TabPages.Count == 0) return;
+            var Child = myTabControl1.SelectedTab.Controls[0] as DEV_Form.ChildInterFace;
+            if (Child == null) return;
+            switch (Command)
+            {
+                case "NEW"   : Child.DoNew();   break;
+                case "SAVE"  : Child.Save();    break;
+                case "SEARCH": Child.Inquire(); break;
+                case "DELETE": Child.Delete();  break;
+            }
+        }
+
+
+
     }
 
 
