@@ -38,7 +38,7 @@ namespace DEV_FORM
 
 
             // 두번째 시리즈 생성
-            Series series2 = new Series();
+            Series series2 = new Series(); // 시리즈1 생성
             series2.Name = "TEST_Series2";
             series2.ChartType = SeriesChartType.Line; 
             chart1.Series.Add(series2);
